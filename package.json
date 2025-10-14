@@ -1,0 +1,33 @@
+{
+  "name": "pinkie-birthday",
+  "version": "1.0.0",
+  "description": "A beautiful birthday website with pink anime-inspired design",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "framer-motion": "latest",
+    "styled-components": "latest",
+    "typescript": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/styled-components": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kvpl7102/pinkie-birthday.git"
+  },
+  "keywords": ["birthday", "website", "pink", "anime", "nextjs"],
+  "author": "Your Name",
+  "license": "MIT"
+}
