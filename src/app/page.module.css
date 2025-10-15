@@ -1,0 +1,185 @@
+/* Page container */
+.pageContainer {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Snap parent container */
+.snapParent {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Individual snap sections */
+.snapSection {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Content wrapper */
+.contentWrapper {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Typography styles with improved contrast */
+.dateSection p {
+  font-size: clamp(1.3rem, 4vw, 2.2rem);
+  color: #d63384;
+  animation: fadeInUp 0.8s ease-out;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.nameSection h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  color: #b30059;
+  margin-bottom: 1rem;
+  animation: fadeInScale 0.8s ease-out;
+  font-weight: 700;
+}
+
+.nameVariations {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #d63384;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.8s ease-out;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.favoriteName {
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: #d63384;
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.8s ease-out;
+  line-height: 1.8;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.literarySection p {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: #b30059;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Birthday wishes styling */
+.birthdayWishes {
+  margin-bottom: 3rem;
+}
+
+.wish {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #d63384;
+  margin: 0.8rem 0;
+  animation: fadeInUp 0.8s ease-out;
+  font-weight: 500;
+}
+
+.wish:nth-child(1) { animation-delay: 0.2s; }
+.wish:nth-child(2) { animation-delay: 0.4s; }
+.wish:nth-child(3) { animation-delay: 0.6s; }
+.wish:nth-child(4) { animation-delay: 0.8s; }
+
+/* Message sections styling */
+.messageSection p {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: #d63384;
+  line-height: 1.8;
+  animation: fadeInUp 0.8s ease-out;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* Debug info */
+.debug {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  z-index: 1000;
+  font-weight: 600;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .snapSection {
+    padding: 1.5rem;
+  }
+
+  .contentWrapper {
+    max-width: 100%;
+  }
+
+  /* Reduce animation complexity on mobile */
+  .nameVariations, .favoriteName {
+    font-size: 1.3rem;
+  }
+
+  .wish {
+    font-size: 1.2rem;
+  }
+
+  .messageSection p {
+    font-size: 1.1rem;
+  }
+
+  .debug {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .snapSection * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .snapParent {
+    scroll-behavior: auto;
+  }
+}
