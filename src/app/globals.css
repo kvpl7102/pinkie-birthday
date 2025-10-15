@@ -1,3 +1,4 @@
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +9,17 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Font variables with Vietnamese support */
+:root {
+  --font-inter: 'Inter', system-ui, sans-serif;
+  --font-dancing: 'Dancing Script', 'Segoe Script', 'Brush Script MT', cursive;
+  --font-kalam: 'Kalam', 'Segoe UI', 'Tahoma', sans-serif;
+  --font-caveat: 'Caveat', 'Segoe Script', 'Brush Script MT', cursive;
+  --font-vietnamese: 'Segoe UI', 'Tahoma', 'Arial Unicode MS', sans-serif;
+}
+
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #ffe6f0 0%, #ffc1d8 50%, #ffb3c7 100%);
@@ -19,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar for webkit browsers */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -37,7 +45,6 @@ body {
   background: #ff6b87;
 }
 
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
   scrollbar-color: #ff91a4 rgba(255, 182, 193, 0.1);
