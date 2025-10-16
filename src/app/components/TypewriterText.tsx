@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 
 interface TypewriterTextProps {
@@ -18,29 +18,19 @@ export default function TypewriterText({
   className = '',
   fontFamily = 'var(--font-caveat)'
 }: TypewriterTextProps) {
-  const [displayText, setDisplayText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
+  // Pre-calculate all character positions for SSR compatibility
+  const characters = useMemo(() => text.split(''), [text])
+
   useEffect(() => {
-    // Initial delay before starting the animation
+    // Simple timeout for initial delay
     const startTimeout = setTimeout(() => {
       setIsVisible(true)
     }, delay)
 
     return () => clearTimeout(startTimeout)
   }, [delay])
-
-  useEffect(() => {
-    if (isVisible && currentIndex < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(prev => prev + text[currentIndex])
-        setCurrentIndex(prev => prev + 1)
-      }, speed)
-
-      return () => clearTimeout(timeout)
-    }
-  }, [isVisible, currentIndex, text, speed])
 
   return (
     <motion.div
@@ -54,8 +44,21 @@ export default function TypewriterText({
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.5 }}
     >
-      {displayText}
-      {isVisible && currentIndex < text.length && (
+      {characters.map((char, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isVisible ? 1 : 0 }}
+          transition={{
+            delay: isVisible ? delay + (index * 0.05) : 0,
+            duration: 0.3
+          }}
+          style={{ display: 'inline-block' }}
+        >
+          {char}
+        </motion.span>
+      ))}
+      {isVisible && (
         <motion.span
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}

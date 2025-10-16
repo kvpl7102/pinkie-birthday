@@ -2,6 +2,8 @@
 
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import FloatingPetals from './FloatingPetals'
+import BackgroundTexture from './BackgroundTexture'
 import styles from '../page.module.css'
 
 interface ScrollSectionProps {
@@ -13,8 +15,8 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, {
     once: false,
-    amount: 0.2,
-    margin: "-5% 0px"
+    amount: 0.5,
+    margin: "-10% 0px"
   })
 
   return (
@@ -47,7 +49,13 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#
 
 export default function Introduction() {
   return (
-    <div className={styles.smoothContainer}>
+    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+      {/* Animated Background Elements */}
+      <BackgroundTexture />
+      <FloatingPetals count={10} />
+
+      {/* Main Scrollable Content */}
+      <div className={styles.smoothContainer} style={{ position: 'relative', width: '100%', height: '100%' }}>
       {/* Section 1: Date Introduction */}
       <ScrollSection background="linear-gradient(135deg, #fff5f8 0%, #ffe6f0 30%, #ffd1e3 70%, #ffc1d8 100%)">
         <motion.div
@@ -316,6 +324,7 @@ export default function Introduction() {
           </motion.div>
         </motion.div>
       </ScrollSection>
+      </div>
     </div>
   )
 }

@@ -62,6 +62,120 @@
 
 /* Fonts are now defined in globals.css */
 
+/* Animated Background Elements */
+.petalsContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.cherryPetal {
+  position: absolute;
+  width: 26px;
+  height: 22px;
+
+
+  background:
+    radial-gradient(circle at 35% 40%, #fffafc 0%, #ffe8f0 55%, #f7c6d5 85%, #e88aab 100%);
+  border-radius: 60% 40% 70% 30% / 60% 60% 40% 40%;
+
+  filter:
+    drop-shadow(0 1px 0 rgba(190, 40, 90, 0.35))
+    drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.65),
+    inset 0 -1px 2px rgba(200, 80, 120, 0.25);
+
+  opacity: 0.95;
+  will-change: transform, opacity;
+}
+
+.cherryPetal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 30%, rgba(255,255,255,0.75), transparent 60%);
+  border-radius: inherit;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.petalNear  { z-index: 22; filter: drop-shadow(0 2px 2px rgba(190,40,90,.25)) drop-shadow(0 0 8px rgba(255,255,255,.55)); }
+.petalMid   { z-index: 21; }
+.petalFar   { z-index: 20; opacity: 0.75; filter: blur(0.5px) drop-shadow(0 0 4px rgba(255,255,255,.4)); }
+
+.petalMultiply { mix-blend-mode: multiply; opacity: 0.9; }
+.petalScreen   { mix-blend-mode: screen;   opacity: 0.85; }
+
+.backgroundTexture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0.08;
+  mix-blend-mode: soft-light;
+  background-image:
+    /* Washi paper texture */
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    /* Subtle diagonal lines */
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.02) 41%, rgba(255, 255, 255, 0.02) 42%, transparent 43%),
+    linear-gradient(-45deg, transparent 60%, rgba(255, 255, 255, 0.02) 61%, rgba(255, 255, 255, 0.02) 62%, transparent 63%);
+  background-size: 60px 60px, 40px 40px, 80px 80px, 120px 120px;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #fff5f8, #ffe6f0);
+  opacity: 1 ;  
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.sparkle:nth-child(odd) {
+  animation-delay: 1s;
+}
+
+.sparkle:nth-child(even) {
+  animation-delay: 2s;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+/* Mobile optimizations for background elements */
+@media (max-width: 768px) {
+  .petalsContainer {
+    opacity: 0.7;
+  }
+
+  .cherryPetal { width: 20px; height: 17px; }
+  .petalFar { filter: blur(0.3px) drop-shadow(0 0 3px rgba(255,255,255,.35)); }
+
+  .backgroundTexture {
+    opacity: 0.05;
+  }
+}
+
 /* Typography styles with handwriting fonts */
 .dateSection p {
   font-family: var(--font-dancing);
