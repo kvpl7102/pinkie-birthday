@@ -1,8 +1,7 @@
 'use client'
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import TypewriterText from './TypewriterText'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import styles from '../page.module.css'
 
 interface ScrollSectionProps {
@@ -10,27 +9,54 @@ interface ScrollSectionProps {
   background?: string
 }
 
-const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#fff5f8" }) => (
-  <section className={styles.snapSection} style={{ background }}>
-    <div className={styles.contentWrapper}>
-      {children}
-    </div>
-  </section>
-)
+const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#fff5f8" }) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.2,
+    margin: "-5% 0px"
+  })
+
+  return (
+    <motion.section
+      ref={ref}
+      className={styles.smoothSection}
+      style={{
+        background,
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+      initial={{ opacity: 0.6 }}
+      animate={{
+        opacity: isInView ? 1 : 0.6,
+        scale: isInView ? 1 : 0.98
+      }}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+    >
+      <div className={styles.contentWrapper}>
+        {children}
+      </div>
+    </motion.section>
+  )
+}
 
 export default function Introduction() {
   return (
-    <div className={styles.snapParent}>
+    <div className={styles.smoothContainer}>
       {/* Section 1: Date Introduction */}
       <ScrollSection background="linear-gradient(135deg, #fff5f8 0%, #ffe6f0 30%, #ffd1e3 70%, #ffc1d8 100%)">
         <motion.div
           className={styles.dateSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false, amount: 0.3 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div style={{ fontFamily: 'var(--font-dancing)', color: '#d63384', fontSize: 'clamp(1.3rem, 4vw, 2.2rem)' }}>
+          <div style={{ fontFamily: 'var(--font-dancing)', color: '#d63384', fontSize: 'clamp(1.5rem, 4vw, 2.2rem)' }}>
             Hôm nay là 31/10, là ngày sinh nhật của một người con gái tuyệt vời.
           </div>
         </motion.div>
@@ -40,10 +66,9 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #fef7f0 0%, #ffe6f0 30%, #ffd1e3 70%, #ffc1d8 100%)">
         <motion.div
           className={styles.nameSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: false, amount: 0.3 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div style={{ fontFamily: 'var(--font-dancing)', color: '#b30059', fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 700 }}>
             Phạm Vũ Diệu Linh
@@ -55,24 +80,28 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #fef9f5 0%, #fff2f0 30%, #ffe6f0 70%, #ffd1e3 100%)">
         <motion.div
           className={styles.nameSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <TypewriterText
-            text="hay Pinkie"
-            delay={200}
-            speed={70}
-            fontFamily="var(--font-kalam)"
-          />
+          <motion.div
+            style={{ fontFamily: 'var(--font-kalam)', color: '#d63384', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', fontWeight: 400 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+          >
+            hay Pinkie
+          </motion.div>
           <br />
-          <TypewriterText
-            text="hay Lily Pham"
-            delay={800}
-            speed={70}
-            fontFamily="var(--font-kalam)"
-          />
+          <motion.div
+            style={{ fontFamily: 'var(--font-kalam)', color: '#d63384', fontSize: 'clamp(1.2rem, 3vw, 1.8rem)', fontWeight: 400 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
+            hay Lily Pham
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -80,20 +109,29 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #fff5f8 0%, #fef7f0 30%, #ffe6f0 70%, #ffd1e3 100%)">
         <motion.div
           className={styles.nameSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -100, rotateY: -10 }}
+          whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            x: { duration: 0.7, ease: "easeOut" }
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 500,
-            lineHeight: 1.6
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 500,
+              lineHeight: 1.6
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             hay cái tên mà mình thích gọi nhất
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -101,20 +139,29 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #fef9f5 0%, #fff5f8 30%, #fef7f0 70%, #ffe6f0 100%)">
         <motion.div
           className={styles.literarySection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, rotateX: -20, y: 20 }}
+          whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+          transition={{
+            duration: 0.9,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            rotateX: { duration: 0.7 }
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#b30059',
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-            fontWeight: 600,
-            fontStyle: 'italic'
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#b30059',
+              fontSize: 'clamp(1.6rem, 4vw, 2.4rem)',
+              fontWeight: 600,
+              fontStyle: 'italic'
+            }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+          >
             Cô gái văn chương - 文学少女
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -122,24 +169,33 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #fff2f0 0%, #fef9f5 30%, #fff5f8 70%, #fef7f0 100%)">
         <motion.div
           className={styles.birthdayWishes}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.8, y: 50 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.68, -0.55, 0.265, 1.55],
+            scale: { duration: 0.6, ease: "easeOut" }
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 400,
-            lineHeight: 1.8,
-            textAlign: 'center'
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.8,
+              textAlign: 'center'
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+          >
             Chúc mừng sinh nhật!<br />
             Happy Birthday!<br />
             お誕生日おめでとう!<br />
             Alles Gute zum Geburtstag!
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -147,20 +203,29 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #ffe6f0 0%, #fff2f0 30%, #fef9f5 70%, #fff5f8 100%)">
         <motion.div
           className={styles.messageSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: 50, rotateZ: 2 }}
+          whileInView={{ opacity: 1, x: 0, rotateZ: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 0.46, 0.45, 0.94],
+            rotateZ: { duration: 0.6 }
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 400,
-            lineHeight: 1.8
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.8
+            }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+          >
             Mình có thể gửi những lời chúc mừng qua tin nhắn như mọi năm
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -168,20 +233,28 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #ffd1e3 0%, #ffe6f0 30%, #fff2f0 70%, #fef9f5 100%)">
         <motion.div
           className={styles.messageSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            duration: 0.7,
+            ease: [0.34, 1.56, 0.64, 1]
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 400,
-            lineHeight: 1.8
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.8
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             nhưng để chúc mừng việc Linh đã hoàn thành chương trình thạc sĩ ở Anh quốc,
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -189,20 +262,28 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #ffc1d8 0%, #ffd1e3 30%, #ffe6f0 70%, #fff2f0 100%)">
         <motion.div
           className={styles.messageSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -30, rotateZ: -1 }}
+          whileInView={{ opacity: 1, x: 0, rotateZ: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 400,
-            lineHeight: 1.8
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.8
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
+          >
             và có khi ai đó sẽ bảo là mình nịnh nọt, nên không biết thật lòng hay không,
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
 
@@ -210,20 +291,29 @@ export default function Introduction() {
       <ScrollSection background="linear-gradient(135deg, #ffb3c7 0%, #ffc1d8 30%, #ffd1e3 70%, #ffe6f0 100%)">
         <motion.div
           className={styles.messageSection}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            ease: [0.34, 1.56, 0.64, 1],
+            scale: { duration: 0.8, ease: "easeOut" }
+          }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div style={{
-            fontFamily: 'var(--font-dancing)',
-            color: '#d63384',
-            fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
-            fontWeight: 400,
-            lineHeight: 1.8
-          }}>
+          <motion.div
+            style={{
+              fontFamily: 'var(--font-dancing)',
+              color: '#d63384',
+              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontWeight: 400,
+              lineHeight: 1.8
+            }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
             nên chúng ta sẽ ở đây để thêm những dẫn chứng cho những lời chúc ấy.
-          </div>
+          </motion.div>
         </motion.div>
       </ScrollSection>
     </div>

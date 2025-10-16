@@ -4,12 +4,19 @@
   width: 100%;
 }
 
-/* Snap parent container */
-.snapParent {
+/* Smooth scrolling container */
+.smoothContainer {
   height: 100vh;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+}
+
+.smoothSection {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 /* Individual snap sections */
