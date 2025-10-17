@@ -49,7 +49,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#
 
 export default function Introduction() {
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', width: '100%' }}>
       {/* Animated Background Elements */}
       <BackgroundTexture />
       <FloatingPetals count={10} />
@@ -168,7 +168,8 @@ export default function Introduction() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
           >
-            Cô gái văn chương - 文学少女
+            Cô gái văn chương <br /> 
+            文学少女
           </motion.div>
         </motion.div>
       </ScrollSection>
@@ -224,7 +225,7 @@ export default function Introduction() {
             style={{
               fontFamily: 'var(--font-dancing)',
               color: '#d63384',
-              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontSize: 'clamp(2rem, 4vw, 2.2rem)',
               fontWeight: 400,
               lineHeight: 1.8
             }}
@@ -232,7 +233,7 @@ export default function Introduction() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
           >
-            Mình có thể gửi những lời chúc mừng qua tin nhắn như mọi năm
+            Mình có thể gửi những lời chúc mừng qua tin nhắn như mọi năm,
           </motion.div>
         </motion.div>
       </ScrollSection>
@@ -253,7 +254,7 @@ export default function Introduction() {
             style={{
               fontFamily: 'var(--font-dancing)',
               color: '#d63384',
-              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontSize: 'clamp(2rem, 4vw, 2.2rem)',
               fontWeight: 400,
               lineHeight: 1.8
             }}
@@ -282,7 +283,7 @@ export default function Introduction() {
             style={{
               fontFamily: 'var(--font-dancing)',
               color: '#d63384',
-              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontSize: 'clamp(2rem, 4vw, 2.2rem)',
               fontWeight: 400,
               lineHeight: 1.8
             }}
@@ -290,7 +291,7 @@ export default function Introduction() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.7 }}
           >
-            và có khi ai đó sẽ bảo là mình nịnh nọt, nên không biết thật lòng hay không,
+            ...và có khi ai đó sẽ bảo là mình nịnh nọt, nên không biết thật lòng hay không,
           </motion.div>
         </motion.div>
       </ScrollSection>
@@ -312,7 +313,7 @@ export default function Introduction() {
             style={{
               fontFamily: 'var(--font-dancing)',
               color: '#d63384',
-              fontSize: 'clamp(1.5rem, 4vw, 2.2rem)',
+              fontSize: 'clamp(2rem, 4vw, 2.2rem)',
               fontWeight: 400,
               lineHeight: 1.8
             }}
