@@ -25,9 +25,6 @@ export default function ScrollSection({
       style={{
         background,
         minHeight: '100svh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
         position: 'relative',
         ...style
       }}

@@ -12,7 +12,7 @@ export default function TransitionBridge() {
         style={{
           position:'absolute', inset:0,
           display:'grid', placeItems:'center',
-          zIndex: 2
+          zIndex: -1
         }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function TransitionBridge() {
       <motion.div
         aria-hidden
         style={{ position:'absolute', left:0, top:0, bottom:0, width:'50%', background:
-          'linear-gradient(135deg,#ffe6f0,#ffc1d8)' , zIndex:1 }}
+          'linear-gradient(135deg,#ffe6f0,#ffc1d8)' , zIndex:-2 }}
         initial={{ x:0 }}
         animate={{ x: inView ? '-100%' : 0 }}
         transition={{ duration:.9, ease:[.25,.8,.25,1] }}
@@ -39,7 +39,7 @@ export default function TransitionBridge() {
       <motion.div
         aria-hidden
         style={{ position:'absolute', right:0, top:0, bottom:0, width:'50%', background:
-          'linear-gradient(135deg,#ffe6f0,#ffc1d8)' , zIndex:1 }}
+          'linear-gradient(135deg,#ffe6f0,#ffc1d8)' , zIndex:-2 }}
         initial={{ x:0 }}
         animate={{ x: inView ? '100%' : 0 }}
         transition={{ duration:.9, ease:[.25,.8,.25,1] }}

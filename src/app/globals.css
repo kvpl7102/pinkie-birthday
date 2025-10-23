@@ -49,3 +49,62 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #ff91a4 rgba(255, 182, 193, 0.1);
 }
+
+/* Hide scrollbar for horizontal carousel */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Heart animation for double-tap like - Flying hearts effect */
+@keyframes heartFloat {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%)
+               translateX(0)
+               translateY(0)
+               scale(0)
+               rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%)
+               translateX(0)
+               translateY(0)
+               scale(calc(var(--heart-scale, 1) * 1.2))
+               rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%)
+               translateX(var(--heart-x-offset, 0px))
+               translateY(-120px)
+               scale(calc(var(--heart-scale, 1) * 0.3))
+               rotate(var(--heart-rotation, 0deg));
+  }
+}
+
+/* Subtle hint animation for double-tap feature */
+@keyframes hintPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes hintFadeOut {
+  0% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0;
+  }
+}

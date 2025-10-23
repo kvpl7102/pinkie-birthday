@@ -49,13 +49,13 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#
 
 export default function Introduction() {
   return (
-    <div style={{ position: 'relative', width: '100%' }}>
+    <div style={{ position: 'relative', width: '100%', overflowX: 'hidden' }}>
       {/* Animated Background Elements */}
       <BackgroundTexture />
       <FloatingPetals count={10} />
 
       {/* Main Scrollable Content */}
-      <div className={styles.smoothContainer} style={{ position: 'relative', width: '100%', height: '100%' }}>
+      <div className={styles.smoothContainer} style={{ position: 'relative', width: '100%', height: '100%', overflowX: 'hidden' }}>
       {/* Section 1: Date Introduction */}
       <ScrollSection background="linear-gradient(135deg, #fff5f8 0%, #ffe6f0 30%, #ffd1e3 70%, #ffc1d8 100%)">
         <motion.div

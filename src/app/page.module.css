@@ -12,11 +12,16 @@
 }
 
 .smoothSection {
-  height: 100vh;
+   min-height: 100svh;
   display: flex;
-  align-items: center;
+  align-items: center;         /* desktop vẫn center */
   justify-content: center;
   position: relative;
+
+  /* tránh phần tử bên trong vẽ “tràn” ra ngoài */
+  isolation: isolate;          /* tách layer compositing */
+  overflow: clip;              /* chặn nội dung vượt ra ngoài section */
+  padding-block: 24px;         /* chút khoảng thở mặc định */
 }
 
 /* Individual snap sections */
@@ -35,6 +40,7 @@
   max-width: 900px;
   width: 100%;
   text-align: center;
+  contain: layout paint;
 }
 
 /* Animation keyframes */
@@ -70,7 +76,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 20;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -106,9 +112,9 @@
   pointer-events: none;
 }
 
-.petalNear  { z-index: 22; filter: drop-shadow(0 2px 2px rgba(190,40,90,.25)) drop-shadow(0 0 8px rgba(255,255,255,.55)); }
-.petalMid   { z-index: 21; }
-.petalFar   { z-index: 20; opacity: 0.75; filter: blur(0.5px) drop-shadow(0 0 4px rgba(255,255,255,.4)); }
+.petalNear  { z-index: 3; filter: drop-shadow(0 2px 2px rgba(190,40,90,.25)) drop-shadow(0 0 8px rgba(255,255,255,.55)); }
+.petalMid   { z-index: 2; }
+.petalFar   { z-index: 1; opacity: 0.75; filter: blur(0.5px) drop-shadow(0 0 4px rgba(255,255,255,.4)); }
 
 .petalMultiply { mix-blend-mode: multiply; opacity: 0.9; }
 .petalScreen   { mix-blend-mode: screen;   opacity: 0.85; }
@@ -120,7 +126,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 15;
+  z-index: 0;
   opacity: 0.08;
   mix-blend-mode: soft-light;
   background-image:
@@ -163,6 +169,13 @@
 }
 
 /* Mobile optimizations for background elements */
+@media (max-width: 1200px) {
+  .smoothSection {
+    align-items: flex-start;
+    padding-block: 48px;
+  }
+}
+
 @media (max-width: 768px) {
   .petalsContainer {
     opacity: 0.7;
@@ -173,6 +186,9 @@
 
   .backgroundTexture {
     opacity: 0.05;
+  }
+  .smoothSection {
+    padding-block: 40px;
   }
 }
 
