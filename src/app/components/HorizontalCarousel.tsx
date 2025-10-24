@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { photos } from '@/app/data/photos'
 import type { Era } from '@/app/data/photos'
 import { motion } from 'framer-motion'
+import { getImagePath } from '@/app/utils/paths'
 
 export default function HorizontalCarousel({ era }: { era: Era }) {
   // Lọc đúng giai đoạn & giữ thứ tự như trong photos.ts
@@ -194,7 +195,7 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
           style={{ position: 'absolute', inset: 0, willChange: 'transform' }}
         >
           <Image
-            src={p.src}
+            src={getImagePath(p.src)}
             alt={p.alt}
             fill
             sizes="(max-width:768px) 80vw, 520px"
