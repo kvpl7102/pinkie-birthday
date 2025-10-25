@@ -321,7 +321,7 @@ export default function Introduction() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            nên chúng ta sẽ ở đây để thêm những dẫn chứng cho những lời chúc ấy.
+            nên mình sẽ cho thấy là mình thật lòng, và không hề nịnh nọt gì hết.
           </motion.div>
         </motion.div>
       </ScrollSection>

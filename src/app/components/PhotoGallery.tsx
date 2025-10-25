@@ -36,32 +36,43 @@ function SectionTitle({ title, subtitle }: { title: string; subtitle?: string })
 export default function StoryGallery() {
   return (
     <>
-      {/* (tuỳ chọn) một section "mở đầu" cho album */}
       <ScrollSection background="linear-gradient(135deg,#fff2f4,#ffe6f0)" style={{ zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.6 }}
           transition={{ duration: 0.5 }}
-          style={{ textAlign: 'center' }}
+         
+          style={{
+            display: 'grid',
+            placeItems: 'center',
+            alignContent: 'center',             
+            rowGap: 12,
+            minHeight: 'min(65vh, 560px)',      
+            width: 'min(900px, 92vw)',
+            padding: '0 clamp(16px,6vw,24px)',
+            textAlign: 'center',
+            margin: '0 auto'
+          }}
         >
           <div
             style={{
               fontFamily: 'var(--font-dancing)',
               color: '#b30059',
-              fontSize: 'clamp(2rem,3.2vw,1.8rem)',
-              marginBottom: 12,
+              fontSize: 'clamp(1.6rem,6vw,2.2rem)',
+              lineHeight: 1.6,
+              maxWidth: '38ch'                    
             }}
           >
-            Qua 23 năm, những nét đẹp ấy không thay đổi chút nào.
+            Qua 23 năm, từ nhỏ đến lớn, mọi người bảo cậu không khác gì mấy.
+            Và mình có thể thấy được phần nào đó trong những bức ảnh này
           </div>
           <div style={{ color: '#d63384', fontSize: 16, opacity: 0.8 }}>
-            Vuốt ngang để xem ảnh
+            Vuốt ngang để xem tiếp ảnh nhé
           </div>
         </motion.div>
       </ScrollSection>
 
-      {/* 4 giai đoạn */}
       <ScrollSection background="#fff5f8" style={{ zIndex: 20 }}>
         <SectionTitle title="Hồi bé nè" />
         <HorizontalCarousel era="childhood" />
