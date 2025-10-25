@@ -8,10 +8,8 @@ import { motion } from 'framer-motion'
 import { getImagePath } from '@/app/utils/paths'
 
 export default function HorizontalCarousel({ era }: { era: Era }) {
-  // Lọc đúng giai đoạn & giữ thứ tự như trong photos.ts
   const originalData = useMemo(() => photos.filter(p => p.era === era), [era])
   
-  // Clone data 3 lần để tạo infinite scroll: [clone, original, clone]
   const data = useMemo(() => {
     return [...originalData, ...originalData, ...originalData]
   }, [originalData])
@@ -20,12 +18,10 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
   const isResettingRef = useRef(false)
   const [isResetting, setIsResetting] = useState(false)
 
-  // Initialize scroll position to middle section
   useEffect(() => {
     const el = scrollerRef.current
     if (!el || originalData.length === 0) return
-    
-    // Scroll to start of middle section without triggering scroll event
+
     requestAnimationFrame(() => {
       const itemWidth = el.scrollWidth / data.length
       const middleStart = itemWidth * originalData.length
@@ -33,7 +29,6 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
     })
   }, [originalData.length, data.length])
 
-  // Track scroll and implement infinite loop
   useEffect(() => {
     const el = scrollerRef.current
     if (!el || originalData.length === 0) return
@@ -45,9 +40,7 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
       const firstSectionEnd = itemWidth * originalData.length
       const secondSectionEnd = itemWidth * originalData.length * 2
       
-      // Reset to middle section when reaching boundaries
       if (el.scrollLeft < firstSectionEnd * 0.05) {
-        // Near start of first section → jump to start of second section
         isResettingRef.current = true
         setIsResetting(true)
         
@@ -61,7 +54,6 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
           })
         })
       } else if (el.scrollLeft > secondSectionEnd * 0.95) {
-        // Near end of third section → jump back to second section
         isResettingRef.current = true
         setIsResetting(true)
         
@@ -81,6 +73,27 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
     onScroll()
     return () => el.removeEventListener('scroll', onScroll)
   }, [data.length, originalData.length])
+
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
+
+    const onWheel = (e: WheelEvent) => {
+      const verticalIntent = Math.abs(e.deltaY) > Math.abs(e.deltaX) * 1.2
+      if (!verticalIntent) return
+
+      const atLeft = el.scrollLeft <= 0
+      const atRight = el.scrollLeft >= el.scrollWidth - el.clientWidth - 1
+
+      if (!(atLeft && e.deltaY < 0) && !(atRight && e.deltaY > 0)) {
+        el.scrollBy({ left: e.deltaY, behavior: 'auto' })
+        e.preventDefault()
+      }
+    }
+
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
 
   return (
     <div style={{ width: '100%', maxWidth: 1100, margin: '0 auto', padding: '0 16px', position: 'relative', zIndex: 15 }}>
@@ -128,14 +141,12 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
   )
 }
 
-// Separate component for each photo card with double-tap like feature
 function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: number }) {
   const [hearts, setHearts] = useState<number[]>([])
   const [showHint, setShowHint] = useState(true)
   const lastTapRef = useRef(0)
   const heartIdRef = useRef(0)
   
-  // Hide hint after first interaction or after 8 seconds
   useEffect(() => {
     const timer = setTimeout(() => setShowHint(false), 8000)
     return () => clearTimeout(timer)
@@ -145,21 +156,18 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
     const now = Date.now()
     const timeSinceLastTap = now - lastTapRef.current
     
-    // Hide hint on any interaction
     setShowHint(false)
     
     if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
-      // Double tap detected - create multiple hearts
       const newHearts: number[] = []
       for (let i = 0; i < 5; i++) {
         newHearts.push(heartIdRef.current++)
       }
       setHearts(prev => [...prev, ...newHearts])
       
-      // Remove hearts after animation completes
       setTimeout(() => {
         setHearts(prev => prev.filter(id => !newHearts.includes(id)))
-      }, 1500)
+      }, 1000)
     }
     
     lastTapRef.current = now
@@ -171,7 +179,6 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
       onClick={handleDoubleTap}
       onTouchEnd={handleDoubleTap}
     >
-      {/* khung ảnh */}
       <motion.div
         initial={{ opacity: 0, y: 8, scale: 0.98 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -186,7 +193,6 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
           boxShadow: '0 10px 30px rgba(179,0,89,.12)',
         }}
       >
-        {/* Ken Burns rất nhẹ */}
         <motion.div
           initial={{ scale: 1.05, x: 0, y: 0 }}
           whileInView={{ scale: 1.12, x: -6, y: -4 }}
@@ -207,7 +213,6 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
           />
         </motion.div>
 
-        {/* caption */}
         {p.caption && (
           <div
             style={{
@@ -227,7 +232,6 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
         )}
       </motion.div>
 
-      {/* Flying hearts particles */}
       {hearts.map((heartId, idx) => {
         const delay = idx * 0.08
         const rotation = (Math.random() - 0.5) * 30
@@ -271,7 +275,6 @@ function PhotoCard({ photo: p, index: i }: { photo: typeof photos[0]; index: num
         )
       })}
       
-      {/* Subtle hint - fades out after 8s or on first tap */}
       {showHint && (
         <div
           style={{

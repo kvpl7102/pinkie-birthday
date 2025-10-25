@@ -97,6 +97,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.content, .text, .textShort {
+  overflow-anchor: none; 
+}
+
 .controls {
   display: flex;
   gap: clamp(4px, 1vw, 8px);

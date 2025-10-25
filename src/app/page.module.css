@@ -6,20 +6,23 @@
 
 /* Smooth scrolling container */
 .smoothContainer {
-  height: 100vh;
+  height: 100svh;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity; 
+  overscroll-behavior: contain;
 }
 
 .smoothSection {
-   min-height: 100svh;
+  min-height: 100svh;
   display: flex;
   align-items: center;         
   justify-content: center;
   position: relative;
   isolation: isolate;          
   overflow: clip;              
-  padding-block: 24px;         
+  padding-block: 24px;  
+  scroll-snap-align: start;       
 }
 
 /* Individual snap sections */

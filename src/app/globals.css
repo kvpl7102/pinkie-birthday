@@ -27,6 +27,20 @@ body {
   overflow-x: hidden;
 }
 
+html, body {
+  overscroll-behavior-y: none;   
+  overscroll-behavior-x: contain;
+  touch-action: pan-y;
+}
+
+.no-anchor {
+  overflow-anchor: none;
+}
+
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
