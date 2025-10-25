@@ -14,14 +14,12 @@
 .smoothSection {
    min-height: 100svh;
   display: flex;
-  align-items: center;         /* desktop vẫn center */
+  align-items: center;         
   justify-content: center;
   position: relative;
-
-  /* tránh phần tử bên trong vẽ “tràn” ra ngoài */
-  isolation: isolate;          /* tách layer compositing */
-  overflow: clip;              /* chặn nội dung vượt ra ngoài section */
-  padding-block: 24px;         /* chút khoảng thở mặc định */
+  isolation: isolate;          
+  overflow: clip;              
+  padding-block: 24px;         
 }
 
 /* Individual snap sections */
@@ -66,7 +64,6 @@
   }
 }
 
-/* Fonts are now defined in globals.css */
 
 /* Animated Background Elements */
 .petalsContainer {

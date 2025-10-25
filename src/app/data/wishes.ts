@@ -8,12 +8,12 @@ export const wishes: WishBlock[] = [
     {
         id: 'w1',
         content:
-            'Dựa vào những bức ảnh trên, nếu phải miêu tả Linh ngắn gọn thì mình sẽ dùng Dễ thương và Quyến rũ. Tuy nhiên đấy mới chỉ nói về ngoại hình, và Linh thì không chỉ có điểm cộng từ vẻ ngoài.'
+            'Dựa vào những bức ảnh trên, nếu phải miêu tả Linh ngắn gọn thì mình sẽ dùng Dễ thương và Quyến rũ. Tuy nhiên đấy mới chỉ nói về ngoại hình, và Linh thì không chỉ có điểm cộng từ vẻ bề ngoài.'
     },
     {
         id: 'w2',
         content:
-            'Cậu là một người năng động, hòa đồng và thân thiện nên cậu luôn có được thiện cảm của nhiều người, và cậu thật sự trân trọng những khoảnh khắc, những mối quan hệ mà mình có được, dù cho có thoáng qua đi nữa. Cậu chăm chỉ và tận tâm trong học tập và công việc, có tinh thần trách nhiệm cao nữa. Cậu có nhiều mơ mộng, nhưng cũng có lúc nhiều suy tư, như 2 mặt của đồng xu vậy, giúp cậu càng dễ dàng thấu cảm và chia sẻ với người khác hơn.'
+            'Cậu là một người năng động, hòa đồng và thân thiện nên cậu luôn có được thiện cảm của nhiều người, và cậu thật sự trân trọng những khoảnh khắc, những mối quan hệ mà mình có được, dù cho có thoáng qua đi nữa. Cậu chăm chỉ và tận tâm trong học tập và công việc, có tinh thần trách nhiệm cao nữa. Cậu có nhiều mơ mộng, nhưng cũng có lúc nhiều suy tư, nên cậu càng dễ dàng thấu cảm và chia sẻ với người khác hơn.'
     },
     {
         id: 'w3',

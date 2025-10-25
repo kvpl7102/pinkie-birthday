@@ -10,7 +10,10 @@
           "scrollbar-width",
           "scrollbar-color",
           "scrollbar-width: none",
-          "scrollbar-width: thin"
+          "scrollbar-width: thin",
+          "overscroll-behavior",
+          "overscroll-behavior: contain",
+          "overflow: clip"
         ]
       }
     ],

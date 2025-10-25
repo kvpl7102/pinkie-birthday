@@ -9,9 +9,7 @@ export default function Home() {
   return (
     <>
       <Introduction />
-      <div id ="gallery">
-        <StoryGallery />
-      </div> 
+      <StoryGallery />      
       <LetterSection />
     </>
   )
