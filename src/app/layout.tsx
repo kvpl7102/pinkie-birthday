@@ -23,8 +23,8 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  title: 'Happy Birthday, Pinkie! 💕',
-  description: 'A beautiful birthday celebration with love and memories',
+  title: 'Happy Birthday, Pinkie!',
+  description: 'Món quà sinh nhật nho nhỏ cho cô gái văn chương',
 }
 
 export default function RootLayout({

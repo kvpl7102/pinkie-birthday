@@ -3,16 +3,14 @@
 import { motion, useInView } from 'framer-motion'
 import {  useEffect, useRef, useState } from 'react'
 import styles from './MiraiLetter.module.css'
+import { getImagePath } from '@/app/utils/paths'
 
 interface Props { onOpen: () => void }
 
-
-const BP = process.env.NEXT_PUBLIC_BASE_PATH ?? '' 
 export default function MiraiLetter({ onOpen }: Props) {
   const ref = useRef<HTMLDivElement>(null)
   const vidRef = useRef<HTMLVideoElement>(null)
   const [useGif, setUseGif] = useState(false)
-  const inView = useInView(ref, { amount: 0.4, once: false })
 
   const prefersReduced =
     typeof window !== 'undefined' &&
@@ -54,14 +52,14 @@ export default function MiraiLetter({ onOpen }: Props) {
 
         <div className={styles.mediaBox}>
       {prefersReduced ? (
-        <img src={`${BP}/media/mirai.jpg`} alt="" className={styles.media} loading="lazy" />
+        <img src={getImagePath('/media/mirai.jpg')} alt="" className={styles.media} loading="lazy" />
       ) : useGif ? (
-        <img src={`${BP}/media/kuriyama-mirai.gif`} alt="" className={styles.media} />
+        <img src={getImagePath('/media/kuriyama-mirai.gif')} alt="" className={styles.media} />
       ) : (
         <video
           ref={vidRef}
           className={styles.media}
-          poster={`${BP}/media/mirai.jpg`}
+          poster={getImagePath('/media/mirai.jpg')}
           playsInline
           muted
           loop
@@ -69,8 +67,8 @@ export default function MiraiLetter({ onOpen }: Props) {
           autoPlay
           controls={false}
         >
-          <source src={`${BP}/media/mirai.webm`} type="video/webm" />
-          <source src={`${BP}/media/mirai.mp4`} type="video/mp4" />
+          <source src={getImagePath('/media/mirai.webm')} type="video/webm" />
+          <source src={getImagePath('/media/mirai.mp4')} type="video/mp4" />
         </video>
       )}
       <button onClick={onOpen} className={styles.letterBtn}>Mở thư</button>

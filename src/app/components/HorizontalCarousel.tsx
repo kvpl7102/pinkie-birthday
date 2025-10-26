@@ -122,7 +122,6 @@ export default function HorizontalCarousel({ era }: { era: Era }) {
         })}
       </div>
 
-      {/* hint swipe - stays visible longer */}
       <motion.div
         initial={{ opacity: 0, y: 4 }}
         animate={{ opacity: 0.7, y: 0 }}

@@ -1,11 +1,6 @@
-/**
- * Get the correct image path with basePath for GitHub Pages deployment
- */
+const BP = (process.env.NEXT_PUBLIC_BASE_PATH ?? '').replace(/\/+$/, '')
+
 export function getImagePath(path: string): string {
-  // In production on GitHub Pages, add basePath
-  if (process.env.NODE_ENV === 'production') {
-    return `/pinkie-birthday${path}`
-  }
-  // In development, use path as-is
-  return path
+  const p = path.startsWith('/') ? path : `/${path}`
+  return `${BP}${p}`
 }
