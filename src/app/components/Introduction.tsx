@@ -289,7 +289,7 @@ export default function Introduction() {
             }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.7 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
           >
             ...và có khi ai đó sẽ bảo là mình nịnh nọt, nên không biết thật lòng hay không,
           </motion.div>

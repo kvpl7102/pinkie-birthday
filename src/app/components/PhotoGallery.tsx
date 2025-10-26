@@ -45,6 +45,8 @@ export default function StoryGallery() {
          
           style={{
             display: 'grid',
+            gridTemplateColumns: 'auto',
+            gridTemplateRows: '50vh',
             placeItems: 'center',
             alignContent: 'center',             
             rowGap: 12,
@@ -67,7 +69,7 @@ export default function StoryGallery() {
             Qua 23 năm, từ nhỏ đến lớn, mọi người bảo cậu không khác gì mấy.
             Và mình có thể thấy được phần nào đó trong những bức ảnh này
           </div>
-          <div style={{ color: '#d63384', fontSize: 16, opacity: 0.8 }}>
+          <div style={{ color: '#d63384', fontFamily: 'var(--font-dancing)', fontSize: 22, opacity: 0.8 }}>
             Vuốt ngang để xem tiếp ảnh nhé
           </div>
         </motion.div>

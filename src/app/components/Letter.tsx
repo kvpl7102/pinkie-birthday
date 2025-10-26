@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { wishes } from '@/app/data/wishes'
 import styles from './Letter.module.css'
+import MiraiLetter from './MiraiLetter'
 
 function useTypewriterWords(text: string, playing: boolean, speed = 42, revealAll = false) {
   const words = useMemo(() => text.split(/(\s+)/), [text])
@@ -132,19 +133,7 @@ export default function LetterSection() {
 
   return (
     <section className={styles.section}>
-      {!opened && (
-        <motion.button
-          className={styles.openButton}
-          onClick={() => setOpened(true)}
-          initial={{ scale: 0.96, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          aria-label="Mở thư"
-        >
-          💌 Chạm để mở thư
-        </motion.button>
-      )}
+      {!opened && <MiraiLetter onOpen={() => setOpened(true)} />}
 
       <AnimatePresence>
         {opened && (
@@ -205,7 +194,7 @@ export default function LetterSection() {
 
               <div className={`${styles.controls} ${styles.controlsDocked}`}>
                 <button onClick={() => setSkipAnim(s => !s)} className={styles.btnSecondary}>
-                  {skipAnim ? 'Bật hiệu ứng' : 'Bỏ qua hiệu ứng'}
+                  {skipAnim ? 'Bật hiệu ứng' : 'Tắt hiệu ứng'}
                 </button>
                 <button onClick={prev} disabled={idx === 0} className={styles.btnSecondary}>
                   ← Trước
