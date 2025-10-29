@@ -2,9 +2,12 @@
 
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import Image from 'next/image'
 import FloatingPetals from './FloatingPetals'
 import BackgroundTexture from './BackgroundTexture'
 import styles from '../page.module.css'
+import { getImagePath } from '@/app/utils/paths'
+import { thumbnail } from '../data/thumbnail'
 
 interface ScrollSectionProps {
   children: React.ReactNode
@@ -81,6 +84,50 @@ export default function Introduction() {
           <div style={{ fontFamily: 'var(--font-dancing)', color: '#b30059', fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 700 }}>
             Phạm Vũ Diệu Linh
           </div>
+          <div
+          style={{
+            width: '100%',
+            maxWidth: 1100,
+            margin: '0 auto',
+            padding: '0 16px',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <div style={{ width: 'min(78vw, 520px)' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 8, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.45 }}
+              style={{
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '3/4',      
+                borderRadius: 16,
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(179,0,89,.12)',
+              }}
+            >
+              <motion.div
+                initial={{ scale: 1.05, x: 0, y: 0 }}
+                whileInView={{ scale: 1.12, x: -6, y: -4 }}
+                viewport={{ once: true, amount: 0.9 }}
+                transition={{ duration: 6, ease: 'linear' }}
+                style={{ position: 'absolute', inset: 0 }}
+              >
+                <Image
+                  src={getImagePath(thumbnail.src)}
+                  alt="FTU — Cover"
+                  fill
+                  sizes="(max-width:768px) 80vw, 520px"
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
         </motion.div>
       </ScrollSection>
 
