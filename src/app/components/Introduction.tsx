@@ -102,7 +102,9 @@ export default function Introduction() {
               transition={{ duration: 0.45 }}
               style={{
                 position: 'relative',
-                width: '100%',
+                width: '85%',
+                placeContent: 'center',
+                placeItems: 'center',
                 aspectRatio: '3/4',      
                 borderRadius: 16,
                 overflow: 'hidden',
