@@ -249,6 +249,7 @@ export default function Introduction() {
           >
             Chúc mừng sinh nhật!<br />
             Happy Birthday!<br />
+            Joyeux anniversaire!<br />
             お誕生日おめでとう!<br />
             Alles Gute zum Geburtstag!
           </motion.div>
