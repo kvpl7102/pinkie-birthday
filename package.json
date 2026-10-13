@@ -8,7 +8,7 @@
     "build": "next build",
     "export": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "gen:photos": "node scripts/generate-photos.cjs"
   },
@@ -21,9 +21,13 @@
     "typescript": "latest"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@playwright/cli": "^0.1.22",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/styled-components": "latest",
+    "eslint": "^9.20.0",
+    "eslint-config-next": "^16.4.0",
     "image-size": "^2.0.2"
   },
   "repository": {

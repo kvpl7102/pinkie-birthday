@@ -10,14 +10,14 @@ We execute in strict sequential phases with self-verification at each checkpoint
 
 ## 2. Phases & Tasks Breakdown
 
-### Phase 1: Tooling, Skills & Design Environment Initialization
-- **Files**: `package.json`, `.gitignore`, `.agents/skills/`, `.gemini/`
+### Phase 1: Tooling, Skills & Design Environment Initialization (✅ Completed)
+- **Files**: `package.json`, `.gitignore`, `.agents/skills/`, `docs/README.md`, `eslint.config.mjs`
 - **Actions**:
-  1. Install `@playwright/cli` as devDependency for terminal-driven browser inspection.
-  2. Install design skills via `npx.cmd skills add Leonxlnx/taste-skill` and `npx.cmd skills add pbakaus/impeccable`.
-  3. Pull reference design archetypes from `voltagent/awesome-design-md` into `docs/design/` or `.agents/`.
-  4. Ensure `.playwright/`, `artifacts/`, and planning files (`intent.md`, `spec.md`, `plan.md`) are kept uncommitted.
-  5. Verify initial baseline: `npm.cmd run type-check` and `npm.cmd run build` pass cleanly.
+  1. Install `@playwright/cli` as devDependency for terminal-driven browser inspection. (Done)
+  2. Install design skills via `npx.cmd skills add Leonxlnx/taste-skill` and `npx.cmd skills add pbakaus/impeccable`. (Done)
+  3. Install browser binaries and agent skills via `npx.cmd playwright-cli install --skills`. (Done)
+  4. Ensure instructions for external agent sessions are up-to-date in `docs/README.md`. (Done)
+  5. Verify initial baseline: `npm.cmd run type-check`, `npm.cmd run lint`, and `npm.cmd run build` pass cleanly. (Done)
 
 ### Phase 2: Route Archival for 2025 (`/2025`)
 - **Files**:
