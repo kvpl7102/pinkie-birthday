@@ -15,7 +15,29 @@ html {
   --font-dancing: 'Dancing Script', 'Segoe Script', 'Brush Script MT', cursive;
   --font-kalam: 'Kalam', 'Segoe UI', 'Tahoma', sans-serif;
   --font-caveat: 'Caveat', 'Segoe Script', 'Brush Script MT', cursive;
+  --font-serif: var(--font-cormorant), 'Playfair Display', Georgia, serif;
   --font-vietnamese: 'Segoe UI', 'Tahoma', 'Arial Unicode MS', sans-serif;
+
+  /* Editorial Design Tokens (from DESIGN.md) */
+  --bg-primary: #FCF8F7;
+  --bg-secondary: #F8EFF0;
+  --bg-card: #FFFFFF;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+
+  --text-main: #2C1820;
+  --text-muted: #7A5C67;
+  --text-accent: #C24D6F;
+  --text-quote: #964860;
+
+  --accent-blush: #F4C2CE;
+  --accent-rose: #E76F8E;
+  --accent-rose-hover: #D65A7B;
+  --accent-gold: #DFBA73;
+
+  --border-delicate: rgba(231, 111, 142, 0.16);
+  --border-focused: rgba(231, 111, 142, 0.45);
+  --shadow-editorial: 0 12px 36px -8px rgba(120, 50, 75, 0.08);
+  --shadow-float: 0 20px 48px -12px rgba(120, 50, 75, 0.14);
 }
 
 body {

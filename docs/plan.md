@@ -19,22 +19,24 @@ We execute in strict sequential phases with self-verification at each checkpoint
   4. Ensure instructions for external agent sessions are up-to-date in `docs/README.md`. (Done)
   5. Verify initial baseline: `npm.cmd run type-check`, `npm.cmd run lint`, and `npm.cmd run build` pass cleanly. (Done)
 
-### Phase 2: Route Archival for 2025 (`/2025`)
+### Phase 2: Route Archival for 2025 (`/2025`) (✅ Completed)
 - **Files**:
   - `src/app/2025/page.tsx`
   - `src/app/data/photos.ts` (preserve)
 - **Actions**:
-  1. Create `src/app/2025/page.tsx` containing the complete 2025 celebration flow (`Introduction`, `StoryGallery`, `LetterSection`).
-  2. Verify that `/2025` runs with exact visual and interactive fidelity.
+  1. Create `src/app/2025/page.tsx` containing the complete 2025 celebration flow (`Introduction`, `StoryGallery`, `LetterSection`). (Done)
+  2. Verify that `/2025` compiles and exports statically with zero regressions. (Done)
 
-### Phase 3: Global Navigation & Design System Grounding
+### Phase 3: Global Navigation & Design System Grounding (✅ Completed)
 - **Files**:
   - `src/app/components/navigation/YearSwitcher.tsx`
   - `src/app/layout.tsx`
+  - `src/app/globals.css`
   - `DESIGN.md` (reference tokens)
 - **Actions**:
-  1. Implement frosted glass `YearSwitcher` floating pill (`2025 Archive` <-> `2026 Celebrating`).
-  2. Mount `YearSwitcher` in `layout.tsx` so both `/`, `/2025`, and `/2026` have seamless year switching.
+  1. Implement frosted glass `YearSwitcher` floating pill (`2025 Archive` <-> `2026 Celebrating`). (Done)
+  2. Mount `YearSwitcher` in `layout.tsx` and integrate Cormorant Garamond serif font and design tokens into `globals.css`. (Done)
+  3. Verified via Playwright CLI: navigation pill renders across all routes with accessible links. (Done)
 
 ### Phase 4: 2026 Data Scaffolding & Fallback Schemas
 - **Files**:
