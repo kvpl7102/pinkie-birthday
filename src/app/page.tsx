@@ -1,16 +1,8 @@
 'use client'
 
-import Introduction from './components/Introduction'
-import TransitionBridge from './components/TransitionBridge'
-import StoryGallery from './components/PhotoGallery'
-import LetterSection from './components/Letter'
+import React from 'react'
+import NintendoQuest from './components/2026/nintendo/NintendoQuest'
 
 export default function Home() {
-  return (
-    <>
-      <Introduction />
-      <StoryGallery />      
-      <LetterSection />
-    </>
-  )
+  return <NintendoQuest />
 }

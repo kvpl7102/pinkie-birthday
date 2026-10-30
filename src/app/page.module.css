@@ -4,13 +4,10 @@
   width: 100%;
 }
 
-/* Smooth scrolling container */
+/* Smooth scrolling container (unified with window scroll) */
 .smoothContainer {
-  height: 100svh;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity; 
-  overscroll-behavior: contain;
+  width: 100%;
+  position: relative;
 }
 
 .smoothSection {
@@ -22,7 +19,6 @@
   isolation: isolate;          
   overflow: clip;              
   padding-block: 24px;  
-  scroll-snap-align: start;       
 }
 
 /* Individual snap sections */

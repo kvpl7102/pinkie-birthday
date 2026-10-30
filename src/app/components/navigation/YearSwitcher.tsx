@@ -8,7 +8,6 @@ import { motion } from 'framer-motion'
 interface YearOption {
   year: string
   label: string
-  badge: string
   href: string
 }
 
@@ -16,13 +15,11 @@ const YEARS: YearOption[] = [
   {
     year: '2025',
     label: '2025',
-    badge: 'Kỷ niệm',
     href: '/2025'
   },
   {
     year: '2026',
     label: '2026',
-    badge: 'Sinh nhật ✨',
     href: '/'
   }
 ]
@@ -37,8 +34,8 @@ export default function YearSwitcher() {
       aria-label="Điều hướng theo năm"
       style={{
         position: 'fixed',
-        top: '16px',
-        right: '16px',
+        top: '12px',
+        right: '12px',
         zIndex: 9999,
         pointerEvents: 'auto',
       }}
@@ -47,14 +44,14 @@ export default function YearSwitcher() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '4px',
-          padding: '4px',
-          background: 'rgba(255, 255, 255, 0.82)',
+          gap: '3px',
+          padding: '3px',
+          background: 'rgba(255, 255, 255, 0.88)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
           borderRadius: '9999px',
           border: '1px solid rgba(231, 111, 142, 0.22)',
-          boxShadow: '0 10px 32px -4px rgba(142, 50, 75, 0.15)',
+          boxShadow: '0 8px 24px -4px rgba(142, 50, 75, 0.15)',
         }}
       >
         {YEARS.map((item) => {
@@ -68,15 +65,15 @@ export default function YearSwitcher() {
                 position: 'relative',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                padding: '8px 14px',
+                gap: '4px',
+                padding: '6px clamp(9px, 2vw, 13px)',
                 borderRadius: '9999px',
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 fontWeight: isActive ? 600 : 500,
                 color: isActive ? '#FFFFFF' : '#7A5C67',
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
-                minHeight: '38px',
+                minHeight: '32px',
                 userSelect: 'none',
                 WebkitTapHighlightColor: 'transparent',
               }}
@@ -99,22 +96,17 @@ export default function YearSwitcher() {
                   }}
                 />
               )}
-              <span style={{ position: 'relative', zIndex: 1, letterSpacing: '0.02em' }}>
-                {item.label}
-              </span>
               <span
                 style={{
                   position: 'relative',
                   zIndex: 1,
-                  fontSize: '0.7rem',
-                  opacity: isActive ? 0.95 : 0.75,
-                  padding: '1px 6px',
-                  borderRadius: '999px',
-                  background: isActive ? 'rgba(255, 255, 255, 0.22)' : 'rgba(231, 111, 142, 0.08)',
-                  color: isActive ? '#FFFFFF' : '#964860',
+                  letterSpacing: '0.03em',
+                  padding: '2px 6px',
+                  fontWeight: isActive ? 700 : 500,
+                  fontSize: '0.9rem',
                 }}
               >
-                {item.badge}
+                {item.label}
               </span>
             </Link>
           )

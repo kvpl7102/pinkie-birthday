@@ -28,7 +28,7 @@ const ScrollSection: React.FC<ScrollSectionProps> = ({ children, background = "#
       className={styles.smoothSection}
       style={{
         background,
-        height: '100vh',
+        minHeight: '100svh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -58,7 +58,7 @@ export default function Introduction() {
       <FloatingPetals count={10} />
 
       {/* Main Scrollable Content */}
-      <div className={styles.smoothContainer} style={{ position: 'relative', width: '100%', height: '100%', overflowX: 'hidden' }}>
+      <div className={styles.smoothContainer} style={{ position: 'relative', width: '100%' }}>
       {/* Section 1: Date Introduction */}
       <ScrollSection background="linear-gradient(135deg, #fff5f8 0%, #ffe6f0 30%, #ffd1e3 70%, #ffc1d8 100%)">
         <motion.div
