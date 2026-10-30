@@ -654,7 +654,7 @@ export const MONTAGE_ITEMS_2026: MontageItem[] = [
     "title": "Thư tình cuối mùa thu",
     "content": "Tình ta như hàng cây \nĐã qua mùa gió bão \nTình ta như dòng sông \nĐã yên ngày thác lũ \n...\nChỉ còn anh và em \nCùng tình yêu ở lại... \n- Kìa bao người yêu mới \nĐi qua cùng heo may",
     "author": "Xuân Quỳnh",
-    "stamp": "LOVE & LIGHT",
+    "stamp": "",
     "colorScheme": "champagne",
     "span": "wide"
   },

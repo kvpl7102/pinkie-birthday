@@ -170,48 +170,7 @@ export default function VideoCard({ item, onOpenLightbox }: VideoCardProps) {
           }}
         />
 
-        {/* Top Badges */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '12px',
-            left: '12px',
-            right: '12px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            zIndex: 3,
-            pointerEvents: 'none',
-          }}
-        >
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '4px 10px',
-              borderRadius: '999px',
-              background: 'rgba(231, 111, 142, 0.9)',
-              color: '#FFFFFF',
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              boxShadow: '0 4px 12px rgba(231, 111, 142, 0.4)',
-            }}
-          >
-            <span
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: '#FFFFFF',
-                animation: isPlaying ? 'pulse 1.5s infinite' : 'none',
-              }}
-            />
-            Thước phim
-          </span>
-        </div>
+
 
         {/* Controls Overlay (Always accessible) */}
         <div

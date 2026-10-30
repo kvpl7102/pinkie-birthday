@@ -196,7 +196,7 @@ export default function EditorialBentoGrid({
               fontStyle: 'italic',
             }}
           >
-            Đang hiển thị {displayedItems.length} trên {filteredItems.length} khoảnh khắc
+            Đang hiển thị {displayedItems.length} trên {filteredItems.length} ảnh
           </div>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <button
@@ -217,7 +217,7 @@ export default function EditorialBentoGrid({
                 transition: 'all 0.2s ease',
               }}
             >
-              <span>Khám phá thêm khoảnh khắc</span>
+              <span>Tải thêm</span>
             </button>
             <button
               onClick={() => setVisibleCount(filteredItems.length)}
