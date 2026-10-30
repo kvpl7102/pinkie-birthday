@@ -10,18 +10,18 @@ import { DATE_PLAN_2026 } from '@/app/data/2026/datePlan'
 const NO_BUTTON_LABELS = [
   'Không <No>',
   'Ơ kìa:<',
-  'Nút YES bên cạnh to và đẹp hơn nè!',
-  'Chắc là bấm nhầm đúng không? Cho chọn lại nè!',
+  'Huhu sao vẫn là nút này',
+  'Là bấm nhầm đúng không? ',
   'Nhất định không chịu luôn sao?',
   'Dỗi rùi đấy nhé! Nhưng vẫn đợi cậu đổi ý thui...',
   'Nút nỳ sắp biến mất rồi đó nha!',
   'Hết đường lui rồi, chọn YES thôi!',
-  'YAY WE DID IT CHAT! SHE CHOSE YES',
+  'YAY WE DID IT CHAT! SHE SAID YES',
 ]
 
 const DIALOG_REACTIONS = [
   'Nè nè, hôm nay là sinh nhật của một người rất đặc biệt đó! Cậu có muốn cùng mình đi chơi sinh nhật không ạ?',
-  'Ủa sao chọn vậy vậy à?! Chọn lại đi nèo, hôm nay sinh nhật cơ mà!',
+  'Ủa sao lại chọn vậy?! Chọn lại đi nèo, hôm nay sinh nhật cơ mà!',
   'Cậu nhìn xem kìa, nút YES bên cạnh đang to lên và mời gọi lắm luôn á!',
   'Tay lỡ trượt trúng nút thôi đúng không? Cho cậu bấm lại nè!',
   'Cậu kiên quyết dữ vậy sao... Nhưng mà mình biết thừa cậu cũng muốn đi mà!',
