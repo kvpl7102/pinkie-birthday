@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BaseMediaItem } from '../../data/2026/montage'
+import { getImagePath } from '@/app/utils/paths'
 
 interface PolaroidCardProps {
   item: BaseMediaItem
@@ -204,8 +205,8 @@ export default function PolaroidCard({
           <div style={{ position: 'relative', width: '100%', height: '100%' }}>
             <video
               ref={videoRef}
-              src={item.src}
-              poster={item.poster}
+              src={getImagePath(item.src)}
+              poster={getImagePath(item.thumb || item.poster)}
               playsInline
               loop
               muted={isMuted}
@@ -315,7 +316,7 @@ export default function PolaroidCard({
         ) : (
           <img
             ref={imgRef}
-            src={item.src}
+            src={getImagePath(item.thumb || item.src)}
             alt={item.alt}
             loading="lazy"
             onLoad={() => setIsLoaded(true)}

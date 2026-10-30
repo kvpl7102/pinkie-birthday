@@ -32,13 +32,7 @@ export default function YearSwitcher() {
   return (
     <aside
       aria-label="Điều hướng theo năm"
-      style={{
-        position: 'fixed',
-        top: '12px',
-        right: '12px',
-        zIndex: 9999,
-        pointerEvents: 'auto',
-      }}
+      className="year-switcher-aside"
     >
       <nav
         style={{

@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BaseMediaItem } from '../../data/2026/montage'
+import { getImagePath } from '@/app/utils/paths'
 
 interface VideoCardProps {
   item: BaseMediaItem
@@ -155,8 +156,8 @@ export default function VideoCard({ item, onOpenLightbox }: VideoCardProps) {
       >
         <video
           ref={videoRef}
-          src={item.src}
-          poster={item.thumb || item.poster}
+          src={getImagePath(item.src)}
+          poster={getImagePath(item.thumb || item.poster)}
           playsInline
           muted={isMuted}
           loop

@@ -22,13 +22,7 @@ export default function DirectionSwitcher() {
   return (
     <aside
       aria-label="Chuyển đổi màn hình 2026"
-      style={{
-        position: 'fixed',
-        top: '16px',
-        left: '16px',
-        zIndex: 9999,
-        pointerEvents: 'auto',
-      }}
+      className="direction-switcher-aside"
     >
       <nav
         style={{

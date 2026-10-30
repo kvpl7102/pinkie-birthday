@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { BaseMediaItem } from '../../data/2026/montage'
+import { getImagePath } from '@/app/utils/paths'
 
 interface MediaCardProps {
   item: BaseMediaItem
@@ -97,7 +98,7 @@ export default function MediaCard({ item, onOpenLightbox }: MediaCardProps) {
         {inView ? (
           <img
             ref={imgRef}
-            src={item.thumb || item.src}
+            src={getImagePath(item.thumb || item.src)}
             alt={item.alt}
             loading="lazy"
             decoding="async"

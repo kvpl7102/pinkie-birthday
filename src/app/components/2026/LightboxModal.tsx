@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MontageItem, BaseMediaItem } from '../../data/2026/montage'
+import { getImagePath } from '@/app/utils/paths'
 
 interface LightboxModalProps {
   items: MontageItem[]
@@ -319,8 +320,8 @@ export default function LightboxModal({
                 <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <video
                     ref={videoRef}
-                    src={currentItem.src}
-                    poster={currentItem.poster}
+                    src={getImagePath(currentItem.src)}
+                    poster={getImagePath(currentItem.poster || currentItem.thumb)}
                     playsInline
                     autoPlay
                     loop
@@ -498,7 +499,7 @@ export default function LightboxModal({
               ) : (
                 /* Image or GIF */
                 <img
-                  src={currentItem.src}
+                  src={getImagePath(currentItem.src)}
                   alt={currentItem.alt}
                   style={{
                     maxHeight: '74vh',

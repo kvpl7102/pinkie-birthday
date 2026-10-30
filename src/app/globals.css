@@ -272,3 +272,86 @@ html, body {
   background-size: 40px 40px;
   background-position: 0 0, 20px 20px;
 }
+
+/* Responsive positioning for Retro Game Status HUD & Nav Switchers */
+.retro-status-hud {
+  position: fixed;
+  top: 14px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: calc(100vw - 32px);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.nintendo-quest-wrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 84px 20px 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.nintendo-quest-wrapper.is-accepted {
+  justify-content: flex-start;
+  padding: 112px 20px 60px;
+}
+
+@media (max-width: 768px) {
+  .retro-status-hud {
+    top: 58px !important;
+    gap: 6px !important;
+    padding: 5px 12px !important;
+    font-size: 0.7rem !important;
+    border-width: 2.5px !important;
+    box-shadow: 2px 2px 0px var(--retro-dark) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  .nintendo-quest-wrapper {
+    padding: 112px 16px 40px !important;
+    justify-content: flex-start !important;
+  }
+
+  .nintendo-quest-wrapper.is-accepted {
+    padding: 124px 16px 60px !important;
+  }
+}
+
+.direction-switcher-aside {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.year-switcher-aside {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .direction-switcher-aside {
+    top: 10px !important;
+    left: 10px !important;
+  }
+  .year-switcher-aside {
+    top: 10px !important;
+    right: 10px !important;
+  }
+}

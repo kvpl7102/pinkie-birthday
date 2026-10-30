@@ -67,19 +67,7 @@ export default function NintendoQuest() {
 
   return (
     <div
-      className="sakura-pixel-bg"
-      style={{
-        position: 'relative',
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: isAccepted ? 'flex-start' : 'center',
-        padding: isAccepted ? '112px 20px 60px' : '80px 20px 40px',
-        overflowY: 'auto',
-        overflowX: 'hidden',
-        fontFamily: 'var(--font-inter), sans-serif',
-      }}
+      className={`sakura-pixel-bg nintendo-quest-wrapper ${isAccepted ? 'is-accepted' : ''}`}
     >
       <BackgroundTexture sparkleCount={10} />
       <FloatingPetals count={8} />
@@ -88,14 +76,8 @@ export default function NintendoQuest() {
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
+        className="retro-status-hud"
         style={{
-          position: 'fixed',
-          top: '12px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: 80,
-          display: 'flex',
-          alignItems: 'center',
           gap: 'clamp(6px, 1.8vw, 12px)',
           padding: '6px clamp(10px, 2.5vw, 16px)',
           background: '#FFF8FA',
@@ -108,8 +90,6 @@ export default function NintendoQuest() {
           color: 'var(--retro-dark)',
           maxWidth: 'calc(100vw - 32px)',
           flexWrap: 'nowrap',
-          justifyContent: 'center',
-          whiteSpace: 'nowrap',
         }}
       >
         <span style={{ color: '#E74C6F' }}>
